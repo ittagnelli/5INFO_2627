@@ -8,7 +8,7 @@
 			<li><a href="./">Home</a></li>
 			<li><a href="./chi_sono/">Chi sono</a></li>
 			<li><a href="./input/">Input</a></li>
-			<li><a href="./Counter">Counter</a></li>
+			<li><a href="./counter">Counter</a></li>
 			<li><a href="./About">About</a></li>
 			</ul>
 		</nav>
@@ -36,7 +36,7 @@
 		color: white;
 	}
 	header {
-		background-color: #023e8a;
+		background-color: #8a0202;
 		text-align: center;
 	}
 	
@@ -47,7 +47,7 @@
 	}
 
 	nav {
-		background-color: #0077b6;
+		background-color: #b60000;
 		flex: 1;
 	}
 	
@@ -66,13 +66,13 @@
 		font-weight: bolder;
 	}
 	article {
-		color: #03045e;
+		color: #5e0303;
 		padding: 20px;
 		font-size: 30px;
 		flex: 8;
 	}
 	footer {
-		background-color: #03045e;
+		background-color: #5e0303;
 		text-align: center;
 		font-size: 20px;
 		flex: 1;

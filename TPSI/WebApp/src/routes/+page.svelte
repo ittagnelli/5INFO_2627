@@ -7,7 +7,7 @@
         text-align: center;
     }
     div{
-        border-color: green;
+        border-color: rgb(128, 0, 0);
         border-width: 2px;
         border-style: solid;
         height: 100%;
