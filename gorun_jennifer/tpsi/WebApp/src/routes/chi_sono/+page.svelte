@@ -1,7 +1,7 @@
 <h1>Pagina: chi sono</h1>
 
 <script>
-    import WhoAmI from "#lib/who_am_i.svelte/who_am_i.svelte";
+    import WhoAmI from "#lib/components/who_am_i/who_am_i.svelte";
 
 
 </script>
