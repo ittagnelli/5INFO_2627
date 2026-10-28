@@ -9,11 +9,11 @@
 			<li><a href="./chi_sono/">Chi sono</a></li>
 			<li><a href="./input/">Input</a></li>
 			<li><a href="./counter">Counter</a></li>
-			<li><a href="./About">About</a></li>
+			<li><a href="./about">About</a></li>
 			</ul>
 		</nav>
 		<article>
-			{@render children()}
+			{@render children()} <!--costrutto-->
 		</article>
 	</section>
 	<footer>
@@ -21,7 +21,7 @@
 	</footer>
 </main>
 <script>
-	let { children } = $props();
+	let { children } = $props(); //$ runes
 </script>
 <style>
 	:global(body) {

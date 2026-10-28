@@ -10,15 +10,19 @@
 </svelte:head>
 <script>
     let {counter = $bindable()} = $props();
+    import { doppio } from "../js/store.js";
+    
 
     function decrementa() {
         if(counter > 0) {
-            counter -= 3;
+          counter -= 3;
+          $doppio = counter;
         }
     }
 
     function incrementa() {
-        counter += 2;
+      counter += 2;
+      $doppio = counter;
     }
 </script>
 

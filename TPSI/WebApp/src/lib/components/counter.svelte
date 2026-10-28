@@ -9,16 +9,28 @@
   />
 </svelte:head>
 <script>
+  import { createEventDispatcher } from "svelte";
+  import { contatore } from "../js/store";
+  const dispatch = createEventDispatcher();
     let {counter = $bindable()} = $props();
 
     function decrementa() {
         if(counter > 0) {
             counter--;
+            $contatore = counter;
+            inviaValore('decrementa');
         }
     }
 
     function incrementa() {
         counter++;
+        $contatore = counter;
+        inviaValore('incrementa');
+    }
+
+    // @ts-ignore
+    function inviaValore(tipo) {
+      dispatch('contatore', {tipo: tipo, valore: counter});
     }
 </script>
 

@@ -1,5 +1,12 @@
+<script>
+  import { contatore } from "../lib/js/store.js";
+  import { doppio } from "../lib/js/store.js";
+</script>
+
 <div>
-    <p class="text">Welcometo my WebApp</p>
+  <p class="text">Welcome to my WebApp</p>
+  <p>Valore contatore: {$contatore}</p>
+  <p>Valore doppio: {$doppio}</p>
 </div>
 <style>
     .text {
