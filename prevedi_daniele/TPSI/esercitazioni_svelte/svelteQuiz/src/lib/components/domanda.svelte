@@ -1,4 +1,5 @@
 <script>
+    import { risposteDomande } from "../js/store.js"
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher()
 
@@ -7,12 +8,16 @@
     let testoDomanda = domanda.domanda
     let arrayRisposte = Object.entries(domanda.risposte)
 
-    console.log(arrayRisposte[0][1])
-
-    // dispatch("rispostaSelezionata", {Boolean(rispostaGiusta) == true})
 </script>
 
 <h3>{testoDomanda}</h3>
-<!-- {#each arrayRisposte as risposta}
-    <button rispostaGiusta={risposta[1]} on:click={}>{risposta[0]}</button>
-{/each} -->
+{#each arrayRisposte as risposta}
+    <button on:click={() => risposteDomande.update((val) => [...val, risposta[0]])}>{risposta[0]}</button>
+{/each}
+
+<style>
+    button {
+        display: block;
+        margin: 10px 0;
+    }
+</style>
