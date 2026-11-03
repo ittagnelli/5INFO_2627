@@ -1,10 +1,14 @@
+<script>
+    import Icon from "./icon.svelte"
+</script>
+
 <h1>ToDos</h1>
 <div class="todo-list">
-    <div class="header">H1</div>
-    <div class="header">H2</div>
-    <div class="header">H3</div>
-    <div class="header">H4</div>
-    <div class="header">H5</div>
+    <div class="header"><Icon /></div>
+    <div class="header"><Icon /></div>
+    <div class="header"><Icon /></div>
+    <div class="header"><Icon /></div>
+    <div class="header"><Icon /></div>
 
     <!-- ToDo Item 1 -->
     <div>Cella 1</div>
