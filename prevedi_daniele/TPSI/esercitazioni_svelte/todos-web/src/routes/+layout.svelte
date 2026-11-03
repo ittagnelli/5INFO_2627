@@ -1,5 +1,4 @@
 <main>
-	<h1>Contenitore Principale</h1>
 	<slot />
 </main>
 
