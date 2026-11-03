@@ -1,11 +1,13 @@
-<script>
-	import favicon from '#lib/assets/favicon.svg';
+<main>
+	<h1>Contenitore Principale</h1>
+	<slot />
+</main>
 
-	let { children } = $props();
-</script>
-
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
-
-{@render children()}
+<style>
+	main {
+		border: 3px solid red;
+		width: 60%;
+		height: 90vh;
+		margin: auto;
+	}
+</style>
