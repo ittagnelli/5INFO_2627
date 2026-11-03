@@ -1,6 +1,5 @@
 <h1>ToDos</h1>
 
-<h1>ToDos</h1>
 <div class="todo-list">
 <div class="header">H1</div>
 <div class="header">H2</div>
