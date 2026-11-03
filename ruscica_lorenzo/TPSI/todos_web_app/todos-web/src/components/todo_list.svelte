@@ -31,5 +31,6 @@
         grid-template-columns: 1fr 1fr 4fr 2fr 1fr;
         border: 3px solid blue;
         width: 95%;
+        height: 80%;
     }
 </style>
