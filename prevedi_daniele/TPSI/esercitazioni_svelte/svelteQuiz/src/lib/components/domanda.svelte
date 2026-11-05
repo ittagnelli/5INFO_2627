@@ -1,9 +1,14 @@
 <script>
     import { risposteDomande } from "../js/store.js"
+    import { numeroDomandeCorrette } from "../js/store.js";
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher()
 
     export let domanda
+
+    function getisciRisposta(rispostaCorretta, testoDomanda){
+        dispatch("rispostaSelezionata", {testoDomanda, rispostaCorretta})
+    }
 
     let testoDomanda = domanda.domanda
     let arrayRisposte = Object.entries(domanda.risposte)
@@ -12,7 +17,7 @@
 
 <h3>{testoDomanda}</h3>
 {#each arrayRisposte as risposta}
-    <button on:click={() => risposteDomande.update((val) => [...val, risposta[0]])}>{risposta[0]}</button>
+    <button on:click={() => getisciRisposta(risposta[1] == true, risposta[0])}>{risposta[0]}</button>
 {/each}
 
 <style>
