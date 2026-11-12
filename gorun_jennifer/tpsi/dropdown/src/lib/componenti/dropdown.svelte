@@ -1,8 +1,9 @@
 <script>
+
+    import Item from "./item.svelte";
     export let titolo;
     export let valori;
-
-
+    export let ultimoElementoCliccato
 
     console.log("VALORI:", valori)
 </script>
@@ -10,7 +11,7 @@
 <div class="dropdown"> 
     {titolo}
     {#each valori as valore}
-        <item titolo=(valore)>
+        <Item titolo={valore} bind:contenutoElementoCliccato={ultimoElementoCliccato} />
     {/each}
 </div>
 
@@ -19,8 +20,8 @@
     .dropdown{
         font-size: 20;
         background-color: rgb(255, 0, 0);
-        width: 200px;
-        height: 100px;
+        width: 300px;
+        height: 70px;
         margin: 20px;
 
     }

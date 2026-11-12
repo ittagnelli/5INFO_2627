@@ -4,8 +4,8 @@
 
 <h1>Dropdown tester</h1>
 
-<Dropdown titolo='regione'/>
+<Dropdown titolo='regione' valori={["Piemonte", "Lombardia", "Liguria", "VdA"]}/>
 
-<Dropdown titolo='città'/>
+<Dropdown titolo='città'valori={["Torino", "Milano", "Roma"]}/>
 
-<Dropdown titolo='nazione'/>
+<Dropdown titolo='nazione' valori={["italia", "francia", "germania"]}/>
