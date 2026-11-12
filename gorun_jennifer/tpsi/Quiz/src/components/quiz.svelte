@@ -1,4 +1,3 @@
 <script>
-    export l
-
+    export let domanda;
 </script>
