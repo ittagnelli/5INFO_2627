@@ -1,0 +1,55 @@
+<script>
+	import Counter from './Counter.svelte';
+	import Banner from '../lib/components/banner.svelte';
+</script>
+
+<svelte:head>
+	<title>Home</title>
+	<meta name="description" content="Svelte demo app" />
+</svelte:head>
+
+<section>
+	<h1>
+		<span class="welcome">
+			<enhanced:img class="welcome-image" src="#lib/images/svelte-welcome.png" alt="Welcome" />
+		</span>
+
+		alla tua nuova <br />applicazione SvelteKit
+	</h1>
+
+	<h2>
+		prova a editare il file <strong>src/routes/+page.svelte</strong>
+	</h2>
+
+	<Banner />
+</section>
+
+<style>
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 0.6;
+	}
+
+	h1 {
+		width: 100%;
+	}
+
+	.welcome {
+		display: block;
+		position: relative;
+		width: 100%;
+		height: 0;
+		padding: 0 0 calc(100% * 495 / 2048) 0;
+	}
+
+	.welcome-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		display: block;
+	}
+</style>
