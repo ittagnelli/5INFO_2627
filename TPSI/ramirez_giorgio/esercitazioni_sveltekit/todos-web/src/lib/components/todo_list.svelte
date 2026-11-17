@@ -5,7 +5,7 @@
 
     let todos = [];
     let last_id=0;
-    
+
     const create_todo = async ()=>{
         let todo = {
             id: ++last_id,
@@ -15,6 +15,15 @@
         };
         console.log('CREATE:', todo);
         todos=[...todos, todo]
+    }
+
+    const change_todo_item=async(e)=>{
+        delete_item(e.detail.id);
+    }
+
+    const delete_item = (id)=>{
+        console.log("DELETE:", id);
+        todos = todos.filter(t => t.id != id)
     }
 </script>
 
@@ -29,7 +38,7 @@
 <div class='header'><Icon name='add_box' handler={create_todo}/></div>
 
     {#each todos as todo}
-        <TodoItem todo={todo} />
+        <TodoItem todo={todo} on:change={change_todo_item} />
     {/each}
 </div>
 <style>
