@@ -1,17 +1,17 @@
 <script>
 // @ts-nocheck
 
-  import DropDown      from "../lib/components/DropDown.svelte";
-  import List          from "../lib/components/list.svelte";
+  import DropDown from "../lib/components/DropDown.svelte";
+  import List from "../lib/components/list.svelte";
   import SelectionText from "../lib/components/SelectionText.svelte";
 
   const regioniOptions = ["Abruzzo", "Basilicata", "Calabria", "Campania", "Emilia-Romagna", "Friuli-Venezia Giulia", "Lazio", "Piemonte", "Puglia", "Sardegna", "Valle d'Aosta", "Veneto"];
-  const cittaOptions   = ["Roma", "Milano", "Napoli", "Torino", "Palermo", "Genova", "Bologna", "Firenze", "Bari", "Catania"];
+  const cittaOptions = ["Roma", "Milano", "Napoli", "Torino", "Palermo", "Genova", "Bologna", "Firenze", "Bari", "Catania"];
   const nazioneOptions = ["Italia", "Francia", "Germania", "Spagna", "Portogallo", "Grecia", "Polonia", "Olanda", "Belgio", "Svizzera"];
 
-  let openDropdown    = $state();
+  let openDropdown = $state();
   let selectedRegione = $state();
-  let selectedCitta   = $state();
+  let selectedCitta = $state();
   let selectedNazione = $state();
 
   // @ts-ignore
