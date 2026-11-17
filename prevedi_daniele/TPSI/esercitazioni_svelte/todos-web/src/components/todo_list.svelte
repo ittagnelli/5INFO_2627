@@ -1,6 +1,33 @@
 <script>
     import Icon from "./icon.svelte"
     import TodoItem from "./todo_item.svelte";
+
+    let todos = [
+        {
+            id: 1,
+            task: "Studiare TPSI",
+            done: false,
+            priority: 3
+        },
+        {
+            id: 2,
+            task: "Studiare GPO",
+            done: false,
+            priority: 2
+        },
+        {
+            id: 3,
+            task: "Studiare Informatica",
+            done: false,
+            priority: 1
+        },
+        {
+            id: 4,
+            task: "Far Studiare Gemini",
+            done: true,
+            priority: 1
+        },
+    ]
 </script>
 
 <h1>ToDos</h1>
@@ -12,13 +39,16 @@
     <div class="header"><Icon name="add_box"/></div>
 
     <!-- ToDo Item 1 -->
-    <TodoItem />
+    <TodoItem todo={todos[0]}/>
 
     <!-- ToDo Item 2 -->
-    <TodoItem />
+    <TodoItem todo={todos[1]}/>
 
     <!-- ToDo Item 3 -->
-    <TodoItem />
+    <TodoItem todo={todos[2]}/>
+
+    <!-- ToDo Item 4 -->
+    <TodoItem todo={todos[3]}/>
 </div>
 
 <style>
