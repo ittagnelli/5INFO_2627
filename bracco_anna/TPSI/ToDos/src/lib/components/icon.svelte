@@ -4,9 +4,10 @@
 </svelte:head>
 <script>
     export let name;
+    export let handler = () => {};
 </script>
 
-<span class="material-icons-outlined icon">
+<span class="material-icons-outlined icon" onclick={handler}>
     {name}
 </span>
 
