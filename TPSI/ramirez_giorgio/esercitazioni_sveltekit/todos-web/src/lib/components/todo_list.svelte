@@ -3,42 +3,34 @@
     import Priority from './priority.svelte';
     import TodoItem from './todo_item.svelte';
 
-    let todos = [
-        {
-            id:1,
-            task: 'studiare TPSI',
-            done:false,
-            priority:1
-        },
-        {
-            id:2,
-            task: 'studiare RETI',
-            done:false,
-            priority:2
-        },
-        {
-            id:3,
-            task: 'studiare Informatica',
+    let todos = [];
+    let last_id=0;
+    
+    const create_todo = async ()=>{
+        let todo = {
+            id: ++last_id,
+            task : '',
             done:false,
             priority:3
-        },
-    ]
+        };
+        console.log('CREATE:', todo);
+        todos=[...todos, todo]
+    }
 </script>
 
 <h1>ToDos</h1>
 
 <div class="todo-list">
 
-
 <div class="header"><Icon name='tag'/></div>
 <div class="header"><Icon name='task_alt'/></div>
 <div class="header"><Icon name='list'/></div>
 <div class="header"><Icon name='schedule'/></div>
-<div class="header"><Icon name='add_box'/></div>
+<div class='header'><Icon name='add_box' handler={create_todo}/></div>
 
-<TodoItem todo={todos[0]}/>
-<TodoItem todo={todos[1]}/>
-<TodoItem todo={todos[2]}/>
+    {#each todos as todo}
+        <TodoItem todo={todo} />
+    {/each}
 </div>
 <style>
     .todo-list {
