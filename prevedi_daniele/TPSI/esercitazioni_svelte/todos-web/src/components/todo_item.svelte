@@ -2,8 +2,10 @@
     import Cell from "./cell.svelte";
     import Icon from "./icon.svelte";
     import Priority from "./priority.svelte";
+    import { createEventDispatcher } from "svelte";
 
     export let todo
+    const dispatch = createEventDispatcher()
 
     const toggle_status = () => {
         todo.done = !todo.done
@@ -11,6 +13,10 @@
 
     const edit_task = () => {
         document.getElementById(todo.id).blur()
+    }
+
+    const item_change = (type) => {
+        dispatch('change', {type: type, id: todo.id})
     }
 </script>
 
@@ -41,7 +47,7 @@
 </Cell>
 
 <Cell>
-    <Icon name="delete_forever" />
+    <Icon name="delete_forever" handler={() => item_change("delete")}/>
 </Cell>
 
 
