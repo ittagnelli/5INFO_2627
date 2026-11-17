@@ -7,19 +7,31 @@
    * @type {any[] | null | undefined}
    */
   let todos = [];
-  let lastID=0;
+  let lastID = 0;
 
   async function createTodo() {
-    let todo={
+    let todo = {
       id: ++lastID,
       task: "",
       done: false,
       priority: 1,
-    }
-    console.log("Crato", todo)
+    };
+    console.log("Crato", todo);
     // @ts-ignore
-    todos=[...todos, todo];
+    todos = [...todos, todo];
   }
+
+  // @ts-ignore
+  const changeToDoItem = async (e) => {
+    deleteItems(e.detail.id);
+  };
+
+  // @ts-ignore
+  const deleteItems = (id) => {
+    console.log("DELETE:", id);
+    // @ts-ignore
+    todos = todos.filter((t) => t.id != id);
+  };
 </script>
 
 <div class="todo-list">
@@ -27,10 +39,10 @@
   <div class="header"><Icon nome="task_alt" /></div>
   <div class="header"><Icon nome="list" /></div>
   <div class="header"><Icon nome="schedule" /></div>
-  <div class="header"><Icon nome="add_box" handler={createTodo}/></div>
+  <div class="header"><Icon nome="add_box" handler={createTodo} /></div>
 
   {#each todos as todo}
-    <Item todo={todo} />
+    <Item {todo} on:change={changeToDoItem}/>
   {/each}
 </div>
 
