@@ -4,9 +4,10 @@
 
 <script>
     export let name
+    export let handler = () => {}
 </script>
 
-<span class="material-icons-outlined icon">{name}</span>
+<span class="material-icons-outlined icon" on:click={handler}>{name}</span>
 
 <style>
     .icon {

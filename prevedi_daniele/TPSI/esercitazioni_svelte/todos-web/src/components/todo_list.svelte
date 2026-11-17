@@ -1,33 +1,24 @@
 <script>
     import Icon from "./icon.svelte"
+    import Priority from "./priority.svelte";
     import TodoItem from "./todo_item.svelte";
 
-    let todos = [
-        {
-            id: 1,
-            task: "Studiare TPSI",
+    let todos = []
+    let last_id = 0
+
+    const create_todo = async () => {
+        let todo = {
+            id: ++last_id,
+            task: '',
             done: false,
             priority: 3
-        },
-        {
-            id: 2,
-            task: "Studiare GPO",
-            done: false,
-            priority: 2
-        },
-        {
-            id: 3,
-            task: "Studiare Informatica",
-            done: false,
-            priority: 1
-        },
-        {
-            id: 4,
-            task: "Far Studiare Gemini",
-            done: true,
-            priority: 1
-        },
-    ]
+        }
+        console.log("CREATE: ", todo)
+
+        // In Svelte, per essere reattivo, ci devono essere delle assegnazioni. I metodi (in questo caso todo.push()) non sarebbero reattivi, invece l'assegnazione è reattiva.
+        todos = [...todos, todo]
+    }
+
 </script>
 
 <h1>ToDos</h1>
@@ -36,19 +27,11 @@
     <div class="header"><Icon name="task_alt"/></div>
     <div class="header"><Icon name="list"/></div>
     <div class="header"><Icon name="schedule"/></div>
-    <div class="header"><Icon name="add_box"/></div>
+    <div class="header"><Icon name="add_box" handler={create_todo}/></div>
 
-    <!-- ToDo Item 1 -->
-    <TodoItem todo={todos[0]}/>
-
-    <!-- ToDo Item 2 -->
-    <TodoItem todo={todos[1]}/>
-
-    <!-- ToDo Item 3 -->
-    <TodoItem todo={todos[2]}/>
-
-    <!-- ToDo Item 4 -->
-    <TodoItem todo={todos[3]}/>
+    {#each todos as todo}
+        <TodoItem todo={todo}/>
+    {/each}
 </div>
 
 <style>
