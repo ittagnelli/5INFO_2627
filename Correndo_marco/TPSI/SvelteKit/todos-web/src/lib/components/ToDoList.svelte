@@ -1,6 +1,27 @@
 <script>
-    import Icon from "./icon.svelte"
+    import Icon from "./icon.svelte";
+    import Priority from "./priority.svelte";
     import ToDoItem from "./ToDoItem.svelte";
+
+    let todos=[];
+    let last_id = 0;
+
+    const crea_todo = async () => {
+        let todo = {
+            id : ++last_id,
+            task:'',
+            done:false,
+            priority:3
+        };
+        todos = [...todos,todo];
+    }
+    const changeTodoItem = async (ev) => {
+        deleteItem(ev.detail.id);
+    }
+    const deleteItem = (id) => {
+        todos = todos.filter(el => el.id != id);
+    }
+    
 </script>
 
 <h1>TODOS</h1>
@@ -9,13 +30,11 @@
     <div class="header"><Icon name="task_alt" /></div>
     <div class="header"><Icon name="list" /></div>
     <div class="header"><Icon name="schedule" /></div>
-    <div class="header"><Icon name="add_box" /></div>
+    <div class="header"><Icon name="add_box" handler={crea_todo} /></div>
 
-    <ToDoItem />
-
-    <ToDoItem />
-
-    <ToDoItem />
+    {#each todos as todo}
+        <ToDoItem todo={todo} on:change={changeTodoItem} />
+    {/each}
 </div>
 
 

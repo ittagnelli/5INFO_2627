@@ -1,13 +1,13 @@
 <script>
-    const prios = ["ALTA","MEDIA","BASSA"]
-    let i = 0;
-    function chg(){
-        i++;
+    export let prio = 3;
+    const prios = {1:"ALTA",2:"MEDIA",3:"BASSA"};
+    const getPrio = (num) => {
+        return prios[num];
     }
 </script>
 
-<span class={prios[i%3]} on:click={chg}>
-    {prios[i%3]}
+<span class={getPrio(prio)} on:click={()=>{prio = (prio+1) %3 +1}}>
+    {getPrio(prio)}
 </span>
 
 <style>
@@ -26,7 +26,7 @@
         background-color: red;
     }
     .MEDIA{
-        background-color: yellow;
+        background-color: orange;
     }
     .BASSA{
         background-color: green;
