@@ -25,7 +25,7 @@
 </Cell>
 <Cell>
     {#if todo.done == false}
-        <Icon name="circle" handler={toggle_status}/>
+        <Icon name="circle" handler={toggle_status} color="red"/>
     {:else}
         <Icon name="task_alt" handler={toggle_status}/>
     {/if}
@@ -43,7 +43,7 @@
     <Priority/>
 </Cell>
 <Cell>
-    <Icon name="delete_forever" handler={() => item_change('delete')} />
+    <Icon name="delete_forever" color= "red "handler={() => item_change('delete')} />
 </Cell>
 
 <style>
