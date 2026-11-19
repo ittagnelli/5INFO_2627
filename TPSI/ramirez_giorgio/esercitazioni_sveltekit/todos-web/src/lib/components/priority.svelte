@@ -12,7 +12,8 @@
     }
 
     const change_prio = () =>{
-        prio = (prio+1)%3+1;
+        if(!disabled)
+            prio = (prio+1)%3+1;
     }
 </script>
 
