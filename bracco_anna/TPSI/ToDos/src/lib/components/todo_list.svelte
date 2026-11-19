@@ -24,7 +24,7 @@ let todos = []
         todos = todos.filter(t => t.id != id);
     }
 </script>
-<h1>ToDos</h1>
+<h1 class="app-title">ToDos</h1>
 <div class="todo-list">
     <div class="header"><Icon name="tag" /></div>
     <div class="header"><Icon name="task_alt" /></div>
@@ -41,8 +41,28 @@ let todos = []
     .todo-list {
     display: grid;
     grid-template-columns: 1fr 1fr 4fr 2fr 1fr;
-    border: 3px solid blue;
+    border: 0px solid blue;
     width: 95%;
+    margin: auto}
+
+   @import url(https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap);
+    
+    .app-title {
+        font-family: 'Permanent Marker', cursive;
+        margin-top: 0px;
+        font-size: 60px;
+        opacity: 0.3;
+    
+    .header{
+        border-bottom: 1px solid #E7ECEE;
+        border-right: 1px solid #E7ECEE;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .header-last{
+        border-right: none
+    }
 
 }
 
