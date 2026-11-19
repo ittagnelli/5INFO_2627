@@ -1,6 +1,7 @@
 <script>
-    export let prio=3
-    
+    export let prio=3;
+    export let disabled=false;
+
     const prio2str=(prio)=>{
         let map = {
             1:'ALTA',
@@ -15,7 +16,7 @@
     }
 </script>
 
-<span class={prio2str(prio)} on:click={change_prio}>
+<span class={disabled?'DISABILITATO':prio2str(prio)} on:click={change_prio}>
     {prio2str(prio)}
 </span>
 
@@ -43,5 +44,9 @@
 
     .BASSA {
         background-color: green;
+    }
+
+    .DISABILITATO{
+        background-color: grey;
     }
 </style>

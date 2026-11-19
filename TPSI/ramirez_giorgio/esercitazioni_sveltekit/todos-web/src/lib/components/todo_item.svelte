@@ -33,13 +33,13 @@
 <Cell>
     <input
     type="text"
-    class="todo-item-input-text"
+    class="todo-item-input-text {todo.done == true ? 'text-done':''}"
     id="{todo.id}"
     placeholder="Inserisci il nuovo ToDo"
     on:change={edit_task} />
 </Cell>
 <Cell>
-    <Priority />
+    <Priority disabled={todo.done}/>
 </Cell>
 <Cell last>
     <Icon name='delete_forever' color="red" handler={()=>item_change('delete')}/>
@@ -59,6 +59,11 @@
         color: black;
         padding: 4px;
         padding-left: 10px;
+    }
+
+    .text-done{
+        text-decoration: line-through;
+        opacity: 0.3;
     }
 
 </style>
