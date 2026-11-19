@@ -30,7 +30,7 @@
   const deleteItems = (id) => {
     console.log("DELETE:", id);
     // @ts-ignore
-    todos = todos.filter((t) => t.id != id);
+    todos = todos.filter(t => t.id != id);
   };
 </script>
 
@@ -44,7 +44,7 @@
   </div>
 
   {#each todos as todo}
-    <Item {todo} on:change={changeToDoItem} />
+    <Item todo={todo} on:change={changeToDoItem} />
   {/each}
 </div>
 

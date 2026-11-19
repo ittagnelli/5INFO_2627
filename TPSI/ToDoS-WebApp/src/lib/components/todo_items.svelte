@@ -9,9 +9,9 @@
 
   // @ts-ignore
   const itemChange = (type) => {
-    dispatch("change", {
-      id: todo.id,
+    dispatch('change', {
       type: type,
+      id: todo.id,
     });
   };
 
