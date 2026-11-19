@@ -18,6 +18,7 @@
     const edit_task = () => {
         document.getElementById(todo.id)?.blur();
     }
+
 </script>
 
 <Cell>
@@ -33,16 +34,16 @@
 <Cell>
     <input 
         type="text"
-        class="todo-item-input-text"
+        class="todo-item-input-text {todo.done == true ? 'text-done' : ''}"
         id="{todo.id}"
         placeholder="Inserisci il nuovo ToDo"
         bind:value={todo.task}
         on:change={edit_task}/>
 </Cell>
 <Cell>
-    <Priority/>
+    <Priority disbled={todo.done}/>
 </Cell>
-<Cell>
+<Cell last>
     <Icon name="delete_forever" color= "red "handler={() => item_change('delete')} />
 </Cell>
 
@@ -60,5 +61,10 @@
     color: black;
     padding: 4px;
     padding-left: 10px;
+  }
+
+  .text-done{
+    text-decoration: line-through;
+    opacity: 0.3;
   }
 </style>
