@@ -7,7 +7,7 @@
     export let todo;
 
     const toggle_status = () => {
-        todo.done = !todo.done
+        todo.done = !todo.do
     }
     const dispatch = createEventDispatcher();
 
