@@ -1,4 +1,7 @@
-<div class="cell">
+<script>
+    export let isLast = false;
+</script>
+<div class="cell {isLast ? 'last-cell' : ''}">
     <slot/>
 </div>
 <style>
@@ -10,5 +13,8 @@
         color: #525252;
         line-height: 32px;
         font-size: 18px;
+    }
+    .last-cell{
+        border-right: none;
     }
 </style>

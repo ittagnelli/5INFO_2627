@@ -1,5 +1,6 @@
 <script>
     export let prio = 3;
+    export let disable = false;
 
     // @ts-ignore
     const prio2Str = (prio) => {
@@ -13,13 +14,14 @@
     }
 
     const changePrio = () =>{
+      if (!disable)
         prio = ((prio + 1) % 3) + 1;
     }
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
-<span class={prio2Str(prio)} onclick={changePrio}>
+<span class={disable ? "DISABILITATO" : prio2Str(prio)} onclick={disable ? () => {} : changePrio}>
   {prio2Str(prio)}
 </span>
 
@@ -44,5 +46,9 @@
   }
   .BASSA {
     background-color: green;
+  }
+
+  .DISABILITATO {
+    background-color: grey;
   }
 </style>

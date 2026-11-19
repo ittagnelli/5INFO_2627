@@ -39,10 +39,12 @@
   <div class="header"><Icon nome="task_alt" /></div>
   <div class="header"><Icon nome="list" /></div>
   <div class="header"><Icon nome="schedule" /></div>
-  <div class="header"><Icon nome="add_box" handler={createTodo} /></div>
+  <div class="header header-last">
+    <Icon nome="add_box" handler={createTodo} />
+  </div>
 
   {#each todos as todo}
-    <Item {todo} on:change={changeToDoItem}/>
+    <Item {todo} on:change={changeToDoItem} />
   {/each}
 </div>
 
@@ -51,8 +53,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr 4fr 2fr 1fr;
     grid-template-rows: repeat(4, 1fr);
-    border: 3px solid blue;
     width: 95%;
     height: 80vh;
+  }
+  .header {
+    border-bottom: 1px solid #e7ecee;
+    border-right: 1px solid #e7ecee;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .header-last {
+    border-right: none;
   }
 </style>
