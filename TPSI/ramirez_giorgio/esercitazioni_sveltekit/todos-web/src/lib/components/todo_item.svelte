@@ -31,6 +31,7 @@
     {/if}
 </Cell>
 <Cell>
+
     <input
     type="text"
     class="todo-item-input-text {todo.done == true ? 'text-done':''}"
