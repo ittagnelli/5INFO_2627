@@ -1,12 +1,17 @@
 <script>
     export let prio = 3;
+    export let disabled = false;
+
     const prios = {1:"ALTA",2:"MEDIA",3:"BASSA"};
-    const getPrio = (num) => {
-        return prios[num];
+    const getPrio = (num) => prios[num]
+    const chgPrio = () => {
+        if(!disabled){
+            prio = (prio+1) %3 +1;
+        }
     }
 </script>
 
-<span class={getPrio(prio)} on:click={()=>{prio = (prio+1) %3 +1}}>
+<span class={disabled ? 'DISABILITATO' : getPrio(prio)} on:click={chgPrio}>
     {getPrio(prio)}
 </span>
 
@@ -30,5 +35,8 @@
     }
     .BASSA{
         background-color: green;
+    }
+    .DISABILITATO{
+        background-color: grey;
     }
 </style>

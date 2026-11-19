@@ -3,7 +3,8 @@
     import Priority from "./priority.svelte";
     import ToDoItem from "./ToDoItem.svelte";
 
-    let todos=[];
+    let todos = localStorage.getItem("todos");
+    todos = todos == null ? [] : todos;
     let last_id = 0;
 
     const crea_todo = async () => {
@@ -21,7 +22,6 @@
     const deleteItem = (id) => {
         todos = todos.filter(el => el.id != id);
     }
-    
 </script>
 
 <h1 class="app-title">ToDos</h1>
@@ -42,6 +42,7 @@
 <style>
     
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
     .app-title{
         font-family: "Press Start 2P", system-ui;
         margin-top: 0px;

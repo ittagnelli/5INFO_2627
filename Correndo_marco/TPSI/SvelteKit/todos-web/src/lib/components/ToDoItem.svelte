@@ -16,6 +16,7 @@
 
     const itemChange = (type) => {
         dispatcher('change',{type:type, id:todo.id});
+        console.log(`DELETE ${JSON.stringify(todo)}`)
     }
     
 </script>
@@ -33,14 +34,15 @@
 <Cell>
     <input 
         type="text" 
-        class="todo-item-input-text"
+        class="todo-item-input-text {todo.done ? 'text-done' : ''}"
         id="{todo.id}"
         placeholder="Inserisci il tuo nuovo To Do"
+        disabled={todo.done}
         bind:value={todo.task}
         on:change={editTask} />
 </Cell>
 
-<Cell><Priority /></Cell>
+<Cell><Priority disabled={todo.done} /></Cell>
 
 <Cell last>
     <Icon name="delete_forever" color="red" handler={() => itemChange('delete')} />
@@ -60,5 +62,10 @@
         color: black;
         padding: 4px;
         padding-left: 10px;
+    }
+
+    .text-done{
+        text-decoration: line-through;
+        opacity: 0.3;
     }
 </style>
