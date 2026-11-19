@@ -35,6 +35,7 @@
 <Cell>
     <input 
         type = "text"
+        disabled = {todo.done}
         class = "todo-item-input-text {todo.done == true ? 'text-done' : '' }"
         id = "{todo.id}"
         placeholder="Inserisci il nuovo ToDo"
