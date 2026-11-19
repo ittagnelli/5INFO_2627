@@ -16,9 +16,8 @@
 }
 </script>
 
-<span class={disabled ? 'DISABILITATO' : prio2str(prio)} on:click={change_prio}
+<span class={disabled ? 'DISABILITATO' : prio2str(prio)} on:click={change_prio}> </span>
 
-</span>
 <style>
     span {
         display: inline-block;

@@ -38,14 +38,17 @@ let todos = []
 </div>
 
 <style>
-    .todo-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 4fr 2fr 1fr;
-    border: 0px solid blue;
-    width: 95%;
-    margin: auto}
 
-   @import url(https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap);
+
+@import url(https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap);
+
+
+    .todo-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 4fr 2fr 1fr;
+        border: 0px solid blue;
+        width: 95%;
+        margin: auto}
     
     .app-title {
         font-family: 'Permanent Marker', cursive;
