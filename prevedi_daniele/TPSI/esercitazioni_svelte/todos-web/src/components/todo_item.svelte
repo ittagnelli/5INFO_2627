@@ -46,7 +46,7 @@
     <Priority />
 </Cell>
 
-<Cell>
+<Cell last>
     <Icon name="delete_forever" color="red" handler={() => item_change("delete")}/>
 </Cell>
 
