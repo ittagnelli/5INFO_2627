@@ -1,5 +1,6 @@
 <script>
     export let prio = 3
+    export let disabled = false
 
     const prio2str = (prio) => {
         let map = {
@@ -15,7 +16,7 @@
     }
 </script>
 
-<span class={prio2str(prio)} on:click={change_prio}>
+<span class={disabled ? 'disabilitato' : prio2str(prio)} on:click={change_prio}>
     {prio2str(prio)}
 </span>
 
@@ -32,6 +33,10 @@
 
     span:hover {
         cursor: pointer;
+    }
+
+    .disabilitato {
+        background-color: grey;
     }
 
     .ALTA {
