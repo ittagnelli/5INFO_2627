@@ -18,7 +18,7 @@
 </script>
 
 <span class={disabled?'DISABILITATO':prio2str(prio)} on:click={change_prio}>
-    {prio2str(prio)}
+    {4prio2str(prio)}
 </span>
 
 <style>
