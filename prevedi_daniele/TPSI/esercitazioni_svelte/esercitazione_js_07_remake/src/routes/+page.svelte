@@ -74,7 +74,6 @@
         display: grid;
         grid-template-columns: 2fr 2fr 3fr 2fr 3fr;
         gap: 2px;
-        width: 70%;
         margin:auto;
     }
 

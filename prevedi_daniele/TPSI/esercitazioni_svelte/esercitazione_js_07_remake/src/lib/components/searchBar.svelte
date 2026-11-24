@@ -6,3 +6,9 @@
 <form>
     <input type="text" bind:value={contenuto} />
 </form>
+
+<style>
+    input{
+        width: 75%;
+    }
+</style>
