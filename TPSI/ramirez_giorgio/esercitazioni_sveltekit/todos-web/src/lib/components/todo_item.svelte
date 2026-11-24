@@ -5,6 +5,7 @@
     import {createEventDispatcher} from 'svelte'
 
     export let todo;
+    let old_priority = todo.priority;
     const dispatch = createEventDispatcher()
     
     const item_change = (type) =>{
@@ -12,11 +13,20 @@
     }
 
     const toggle_status = ()=>{
-        todo.done = !todo.done
+        todo.done = !todo.done;
+        item_change('update');
     }
 
     const edit_task= ()=>{
-        document.getElementById(todo.id)?.blur();
+        document.getElementById(todo.id).blur()
+        item_change('update');
+    }
+
+    $:{
+        if(todo.priority != old_priority){
+            old_priority = todo.priority;
+            item_change('update');
+        }
     }
 </script>
 
@@ -31,19 +41,19 @@
     {/if}
 </Cell>
 <Cell>
-
     <input
-    type="text"
-    class="todo-item-input-text {todo.done == true ? 'text-done':''}"
-    id="{todo.id}"
-    placeholder="Inserisci il nuovo ToDo"
-    on:change={edit_task} />
+        type="text"
+        class="todo-item-input-text {todo.done == true ? 'text-done':''}"
+        id="{todo.id}"
+        placeholder="Inserisci il nuovo ToDo"
+        bind:value={todo.task}
+        on:change={edit_task} />
 </Cell>
 <Cell>
-    <Priority disabled={todo.done}/>
+    <Priority bind:prio={todo.priority} disabled={todo.done}/>
 </Cell>
 <Cell last>
-    <Icon name='delete_forever' color="red" handler={()=>item_change('delete')}/>
+    <Icon name='delete_forever' color="red" handler={() => item_change('delete')}/>
 </Cell>
 
 <style>

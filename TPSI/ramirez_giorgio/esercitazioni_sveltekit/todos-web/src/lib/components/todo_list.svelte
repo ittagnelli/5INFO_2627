@@ -1,9 +1,7 @@
 <script>
-    import { json } from '@sveltejs/kit';
     import Icon from './icon.svelte'
-    import Priority from './priority.svelte';
     import TodoItem from './todo_item.svelte';
-    import {onMount} from "svelte";
+    import { onMount } from "svelte";
 
     let todos = [];
     let last_id=0;
@@ -22,8 +20,22 @@
         todos=[...todos, todo]
     }
 
-    const change_todo_item=async(e)=>{
-        delete_item(e.detail.id);
+    const change_todo_item= async (e) => {
+        switch(e.detail.type){
+            case 'update':
+                update_item(e.detail.id);
+                break;
+            case 'delete':
+                delete_item(e.detail.id);
+                break;
+        }
+    }
+
+    const update_item = (id)=>{
+        console.log("UPDATE:",id);
+
+        const todo = todos.filter(t=>t.id==id)[0];
+        localStorage.setItem(`todo${id}`,JSON.stringify(todo));
     }
 
     const delete_item = (id)=>{
