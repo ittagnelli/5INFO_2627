@@ -1,7 +1,11 @@
 <script>
+// @ts-nocheck
+
 import Icon from "./icon.svelte";
 import TodoItem from "./todo_item.svelte";
+import { onMount } from "svelte";
 
+// @ts-ignore
 let todos = []
 
     let last_id = 0;
@@ -14,15 +18,52 @@ let todos = []
             priority: 3
         };
         console.log('CREATE: ', todo)
+
+        localStorage.setItem(`todo${todo.id}`, JSON.stringify(todo))
+
+        // @ts-ignore
         todos = [...todos, todo]
     }
+    // @ts-ignore
     const change_todo_item = async (e) => {
-        delete_item(e.detail.id);
+        switch(e.detail.type){
+            case 'update':
+                // @ts-ignore
+                update_item,(e.detail.id)
+                break
+            case 'delete' :
+                delete_item(e.detail.id)
+                break
+        }
     }
+    // @ts-ignore
     const delete_item = (id) => {
         console.log('DELETE', id);
+        // @ts-ignore
         todos = todos.filter(t => t.id != id);
     }
+    // @ts-ignore
+    const update_item = (id) => {
+        console.log('UPDATE:', id)
+
+        // @ts-ignore
+        const todo = todos.filter(t => t.id == id)[0];
+        // @ts-ignore
+        localStorage.setItem(`todo${id}`, JSON.stringify(todo));
+    }
+
+    onMount(async () => {
+        for(let i = 0; i < localStorage.length; i++){
+            const key = localStorage.key(i);
+            // @ts-ignore
+            const todo = JSON.parse(localStorage.getItem(key));
+            if (todo != null)
+                todos.push(todo)
+        }
+
+        // @ts-ignore
+        todos= [...todos];
+    })
 </script>
 <h1 class="app-title">ToDos</h1>
 <div class="todo-list">

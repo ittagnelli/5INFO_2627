@@ -5,6 +5,7 @@
     import { createEventDispatcher } from "svelte";
 
     export let todo
+    let old_priority = todo.priority;
     const dispatch = createEventDispatcher()
 
     const edit_task = () => {
@@ -17,6 +18,14 @@
 
     const toggle_status= () => {
         todo.done = !todo.done;
+        item_change('update')
+    }
+
+    $ : {
+        if(todo.priority != old_priority){
+            old_priority = todo.priority;
+            item_change('update')
+        }
     }
 
 </script>

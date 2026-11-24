@@ -2,12 +2,14 @@
     export let prio = 3; 
     export let disabled = false; 
 
+    // @ts-ignore
     const prio2str = (prio) => {
     let map = {
         1: 'ALTA',
         2: 'MEDIA',
         3: 'BASSA'
 }
+    // @ts-ignore
     return map[prio];
 }
     const change_prio = () => {
