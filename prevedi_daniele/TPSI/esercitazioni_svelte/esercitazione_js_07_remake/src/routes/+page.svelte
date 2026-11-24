@@ -1,8 +1,7 @@
-<svelte:head>
-    from './lib/components/searchBar.svelte' import SearchBar;
-</svelte:head>
-
 <script>
+    import SearchBar from "../lib/components/searchBar.svelte";
+    import contenuto from "../lib/components/searchBar.svelte"
+
 
     let contatti = [
         { cognome: "Rossi", nome: "Mario", indirizzo: "Via Roma 1", telefono: "1234567890" },
@@ -29,16 +28,16 @@
         <h3>Azioni</h3>
     </div>
     <div class="table-search-bar" id="table-search-cognome">
-        
+        <SearchBar parametro="cognome"/>
     </div>
     <div class="table-search-bar" id="table-search-nome">
-        
+        <SearchBar parametro="nome"/>
     </div>
     <div class="table-search-bar" id="table-search-indirizzo">
-        
+        <SearchBar parametro="indirizzo"/>
     </div>
     <div class="table-search-bar" id="table-search-telefono">
-        
+        <SearchBar parametro="telefono"/>
     </div>
     <div class="table-search-bar" id="table-search-azioni">
         <button class="table-actions-button" id="search-button">Cerca</button>
