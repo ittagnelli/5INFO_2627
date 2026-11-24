@@ -5,6 +5,7 @@
     import Priority from "./priority.svelte";
 
     export let todo;
+    let old_priority = todo.priority;
     const dispatch = createEventDispatcher();
 
     const item_change = (type) => {
@@ -13,12 +14,20 @@
 
     const toggle_status = () => {
         todo.done = !todo.done;
+        item_change('update');
     }
     
     const edit_task = () => {
         document.getElementById(todo.id)?.blur();
+        item_change('update');
     }
 
+    $: {
+        if (todo.priority != old_priority) {
+            old_priority = todo.priority;
+            item_change('update');
+        }
+    }
 </script>
 
 <Cell>
@@ -41,10 +50,10 @@
         on:change={edit_task}/>
 </Cell>
 <Cell>
-    <Priority disbled={todo.done}/>
+    <Priority bind:prio={todo.priority} disabled={todo.done}/>
 </Cell>
 <Cell last>
-    <Icon name="delete_forever" color= "red "handler={() => item_change('delete')} />
+    <Icon name="delete_forever" color="red" handler={() => item_change('delete')} />
 </Cell>
 
 <style>
