@@ -5,18 +5,28 @@
     import { createEventDispatcher } from "svelte";
 
     export let todo
+    let old_priority = todo.priority
     const dispatch = createEventDispatcher()
 
     const toggle_status = () => {
         todo.done = !todo.done
+        item_change('update')
     }
 
     const edit_task = () => {
         document.getElementById(todo.id).blur()
+        item_change('update')
     }
 
     const item_change = (type) => {
         dispatch('change', {type: type, id: todo.id})
+    }
+
+    $: {
+        if (todo.priority != old_priority){
+            old_priority = todo.priority
+            item_change('update')
+        }
     }
 </script>
 
@@ -44,7 +54,7 @@
 </Cell>
 
 <Cell>
-    <Priority disabled={todo.done}/>
+    <Priority bind:prio={todo.priority} disabled={todo.done}/>
 </Cell>
 
 <Cell last>

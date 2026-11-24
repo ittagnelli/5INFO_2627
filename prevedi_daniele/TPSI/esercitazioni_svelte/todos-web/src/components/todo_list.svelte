@@ -24,12 +24,30 @@
     }
 
     const change_todo_item = async (e) => {
-        delete_item(e.detail.id)
+        switch(e.detail.type){
+            case 'update':
+                update_item(e.detail.id)
+                break
+            case 'delete':
+                delete_item(e.detail.id)
+                break
+        }
+    }
+
+    const update_item = (id) => {
+        console.log("UPDATE: ", id)
+
+        // Aggiorno il localStorage
+        const todo = todos.filter(t => t.id == id)[0]
+        localStorage.setItem(`todo${id}`, JSON.stringify(todo))
     }
 
     const delete_item = (id) => {
         console.log("DELETE: ", id)
         todos = todos.filter(t => t.id != id)
+
+        // Rimuovo il ToDo dal localStorage
+        localStorage.removeItem(`todo${id}`)
     }
 
     onMount(async () => {
