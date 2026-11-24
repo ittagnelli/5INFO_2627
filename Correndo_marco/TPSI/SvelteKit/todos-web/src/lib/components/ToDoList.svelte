@@ -1,26 +1,57 @@
 <script>
     import Icon from "./icon.svelte";
-    import Priority from "./priority.svelte";
     import ToDoItem from "./ToDoItem.svelte";
-
-    let todos = localStorage.getItem("todos");
-    todos = todos == null ? [] : todos;
+    import { onMount } from "svelte";
+    
+    let todos = [];
     let last_id = 0;
 
-    const crea_todo = async () => {
+    onMount(async () => {
+        for(let i=0;i< localStorage.length;i++){
+            const key = localStorage.key(i);
+            const keyn = +key?.substring(4);
+
+            if(keyn >= last_id)
+                last_id = keyn;
+
+            const todo = JSON.parse(localStorage.getItem(key));
+
+            if(todo != null){
+                todos.push(todo);
+            }
+        }
+        todos.sort((a,b) => a.id - b.id);
+        todos = [...todos];
+    });
+    
+
+    const crea_todo = async () => { 
         let todo = {
             id : ++last_id,
             task:'',
             done:false,
             priority:3
         };
+        localStorage.setItem(`Todo${todo.id}`,JSON.stringify(todo));
         todos = [...todos,todo];
     }
     const changeTodoItem = async (ev) => {
-        deleteItem(ev.detail.id);
+        switch(ev.detail.type){
+            case 'delete':
+                deleteItem(ev.detail.id);
+                break;
+            case 'update':
+                updateItem(ev.detail.id);
+                break;
+        }
     }
     const deleteItem = (id) => {
         todos = todos.filter(el => el.id != id);
+        localStorage.removeItem(`Todo${id}`);
+    }
+    const updateItem = (id) => {
+        const todo = todos.filter(t => t.id == id)[0];
+        localStorage.setItem(`Todo${id}`,JSON.stringify(todo));
     }
 </script>
 
