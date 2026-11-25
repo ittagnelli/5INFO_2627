@@ -4,7 +4,7 @@
     export let visibile = false
 </script>
 
-{if visibile}
+{#if visibile}
     <table>
         <tbody>
             <tr>
