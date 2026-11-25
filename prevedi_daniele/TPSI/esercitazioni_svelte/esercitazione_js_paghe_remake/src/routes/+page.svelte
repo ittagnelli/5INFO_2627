@@ -1,8 +1,8 @@
 <script>
-    import { arrayPaghe } from '../lib/store.js';
-    import Button from '../lib/Button.svelte';
-    import Input from '../lib/Input.svelte';
-    import Result from '../lib/Result.svelte';
+    import { arrayPaghe, totaleEuro, mediaEuro, totaleVisibile, mediaVisibile } from '../lib/store.js';
+    import Button from '../lib/components/Button.svelte';
+    import Input from '../lib/components/Input.svelte';
+    import Result from '../lib/components/Result.svelte';
 </script>
 
 <table id="paghe">
@@ -39,6 +39,10 @@
         {/each}
     </tbody>
 </table>
+
+<Result testo="Totale" totale={$totaleEuro} visibile={$totaleVisibile} />
+<Result testo="Media" totale={$mediaEuro} visibile={$mediaVisibile} />
+
 
 <style>
     table {
