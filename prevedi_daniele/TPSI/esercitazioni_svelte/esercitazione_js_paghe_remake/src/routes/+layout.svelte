@@ -1,11 +1,15 @@
-<script>
-	import favicon from '#lib/assets/favicon.svg';
-
-	let { children } = $props();
-</script>
-
 <svelte:head>
-	<link rel="icon" href={favicon} />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Gestione Paghe JS</title>
 </svelte:head>
 
-{@render children()}
+<h1 class="main-title">Gestione Paghe Svelte</h1>
+<slot />
+
+<style>
+	.main-title {
+	    text-align: center;
+	    font-family: 'Bebas Neue';
+	    font-size: 60px;
+	}
+</style>
