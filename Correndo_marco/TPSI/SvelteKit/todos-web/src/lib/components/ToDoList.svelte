@@ -5,6 +5,8 @@
     
     let todos = [];
     let last_id = 0;
+    let modPrio = true;
+    let modId = true;
 
     onMount(async () => {
         for(let i=0;i< localStorage.length;i++){
@@ -24,7 +26,6 @@
         todos = [...todos];
     });
     
-
     const crea_todo = async () => { 
         let todo = {
             id : ++last_id,
@@ -35,6 +36,34 @@
         localStorage.setItem(`Todo${todo.id}`,JSON.stringify(todo));
         todos = [...todos,todo];
     }
+
+    const toggleAll = async () => {
+        for(let i =0;i<todos.length;i++){
+            todos[i].done = !todos[i].done;
+        }
+        todos = [...todos];
+    }
+
+    const orderById = async () => {
+        if(modId){
+            todos.sort((a,b) => a.id - b.id);
+        }else{
+            todos.sort((a,b) => b.id - a.id)
+        }
+        modId = !modId
+        todos = [...todos];
+    }
+
+    const orderByPrio = async () => {
+        if(modPrio){
+            todos.sort((a,b) => b.priority - a.priority);
+        }else{
+            todos.sort((a,b) => a.priority - b.priority)
+        }
+        modPrio = !modPrio
+        todos = [...todos];
+    }
+
     const changeTodoItem = async (ev) => {
         switch(ev.detail.type){
             case 'delete':
@@ -45,10 +74,12 @@
                 break;
         }
     }
+
     const deleteItem = (id) => {
         todos = todos.filter(el => el.id != id);
         localStorage.removeItem(`Todo${id}`);
     }
+
     const updateItem = (id) => {
         const todo = todos.filter(t => t.id == id)[0];
         localStorage.setItem(`Todo${id}`,JSON.stringify(todo));
@@ -58,10 +89,10 @@
 <h1 class="app-title">ToDos</h1>
 
 <div class="tolist">
-    <div class="header"><Icon name="tag" /></div>
-    <div class="header"><Icon name="task_alt" /></div>
+    <div class="header"><Icon name="tag" handler={orderById} /></div>
+    <div class="header"><Icon name="task_alt" handler={toggleAll} /></div>
     <div class="header"><Icon name="list" /></div>
-    <div class="header"><Icon name="schedule" /></div>
+    <div class="header"><Icon name="schedule" handler={orderByPrio} /></div>
     <div class="header header_last"><Icon name="add_box" handler={crea_todo} /></div>
 
     {#each todos as todo}
@@ -71,7 +102,6 @@
 
 
 <style>
-    
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
     .app-title{

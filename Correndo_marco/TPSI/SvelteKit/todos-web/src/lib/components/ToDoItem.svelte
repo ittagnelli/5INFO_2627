@@ -69,6 +69,7 @@
         font-size: 20px;
         color: #525252;
     }
+    
     .todo-item-input-text:focus{
         background-color: rgb(204,229,253);
         color: black;
