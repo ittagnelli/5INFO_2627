@@ -52,6 +52,12 @@
     onMount(async () => {
         for(let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
+            const keyn = +key.substring(4);
+
+            if (keyn >= last_id) {
+                last_id = keyn;
+            }
+
             const todo = JSON.parse(localStorage.getItem(key));
             if (todo != null)
                 todos.push(todo);
@@ -105,4 +111,3 @@
         border-right: none;
     }
 </style>
-                    
