@@ -41,6 +41,8 @@ let todos = []
         console.log('DELETE', id);
         // @ts-ignore
         todos = todos.filter(t => t.id != id);
+
+        localStorage.removeItem(`todo${id}`)
     }
     // @ts-ignore
     const update_item = (id) => {
@@ -55,6 +57,12 @@ let todos = []
     onMount(async () => {
         for(let i = 0; i < localStorage.length; i++){
             const key = localStorage.key(i);
+
+            const keyn = +key.substring(4);
+
+            if(keyn >= last_id)
+            last_id = keyn
+
             // @ts-ignore
             const todo = JSON.parse(localStorage.getItem(key));
             if (todo != null)

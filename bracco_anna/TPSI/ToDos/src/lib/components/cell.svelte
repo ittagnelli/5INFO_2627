@@ -1,8 +1,13 @@
 <script>
     export let last = false;
+
+    import { fade } from 'svelte/transition'
+
 </script>
 
-<div class='cell {last ? 'cell-last' : ''}'>
+<div class='cell {last ? 'cell-last' : ''}'
+    in:fade="{{duration: 700}}"
+    out:fade="{{duration: 350}}">
     <slot/>
 </div>
 

@@ -49,7 +49,7 @@
         on:change={edit_task} />
 </Cell>
 <Cell>
-    <Priority disabled={todo.done}/>
+    <Priority bind:prio={todo.priority} disabled={todo.done}/>
 </Cell>
 <Cell last>
     <Icon name='delete_forever' color='red' handler={() => item_change('delete')}></Icon>
