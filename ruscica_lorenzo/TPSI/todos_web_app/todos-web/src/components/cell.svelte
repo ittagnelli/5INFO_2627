@@ -1,6 +1,14 @@
-<div class="cell">
-    <slot />
-</div>
+<script>
+      import { fade } from 'svelte/transition';
+  
+      export let last = false;
+    </script>
+  
+    <div class="cell {last ? 'cell-last' : ''}"
+         in:fade="{{duration: 700}}"
+         out:fade="{{duration: 350}}">
+      <slot />
+    </div>
 
 <style>
     .cell {
