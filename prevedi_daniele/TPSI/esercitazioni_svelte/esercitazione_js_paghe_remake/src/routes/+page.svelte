@@ -1,8 +1,20 @@
 <script>
     import { arrayPaghe, totaleEuro, mediaEuro, totaleVisibile, mediaVisibile } from '../lib/store.js';
-    import Button from '../lib/components/Button.svelte';
-    import Input from '../lib/components/Input.svelte';
-    import Result from '../lib/components/Result.svelte';
+    import Button from '#lib/components/button.svelte';
+    import Input from '#lib/components/input.svelte';
+    import Result from '#lib/components/result.svelte';
+
+    function aggiungi(){
+        console.log("Aggiungi")
+    }
+
+    function mostraSomma(){
+        console.log("Mostra Somma")
+    }
+
+    function mostraMedia(){
+        console.log("Mostra Media")
+    }
 </script>
 
 <table id="paghe">
@@ -23,9 +35,9 @@
             <td><Input typeInput="text" idInput="nome" /></td>
             <td><Input typeInput="month" idInput="mese" minInput="2024-01" /></td>
             <td><Input typeInput="number" idInput="importo" minInput="500" /></td>
-            <td><Button nomeIcona="add" /></td>
-            <td><Button nomeIcona="functions" /></td>
-            <td><Button nomeIcona="trending_up" /></td>
+            <td><Button nomeIcona="add" on:click={aggiungi} /></td>
+            <td><Button nomeIcona="functions" on:click={mostraSomma} /></td>
+            <td><Button nomeIcona="trending_up" on:click={mostraMedia} /></td>
         </tr>
 
         {#each $arrayPaghe as paga}

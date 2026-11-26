@@ -4,6 +4,13 @@
 
 <script>
     export let nomeIcona = ""
+
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher()
+
+    function clickIntercept(){
+        dispatch('click')
+    }
 </script>
 
 <span class="material-icons icon">{nomeIcona}</span>
