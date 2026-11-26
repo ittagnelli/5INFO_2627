@@ -1,0 +1,7 @@
+{
+	"extends": "$app/tsconfig",
+	"compilerOptions": {
+		"strict": true
+	},
+	"include": ["src", "vite.config.ts", "../WebApp/src/lib/components/who_am_i.svelte"]
+}
