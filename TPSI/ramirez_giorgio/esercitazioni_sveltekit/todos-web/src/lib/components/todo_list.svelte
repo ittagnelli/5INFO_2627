@@ -40,7 +40,9 @@
 
     const delete_item = (id)=>{
         console.log("DELETE:", id);
-        todos = todos.filter(t => t.id != id)
+        todos = todos.filter(t => t.id != id);
+
+        localStorage.removeItem(`todo${id}`);
     }
 
     onMount(async()=>{
