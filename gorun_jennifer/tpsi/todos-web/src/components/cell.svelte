@@ -3,7 +3,7 @@
     export let last = false;
 </script>
 
-<div class="cell {last ? 'cell-last" : ''>
+<div class="cell {last ? 'cell-last' : ''}">
     <slot/>
 </div>
 

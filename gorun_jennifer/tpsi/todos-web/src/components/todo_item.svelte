@@ -35,7 +35,7 @@
 <Cell> 
     <input 
         type="text" 
-        class="todo-item-input-text" 
+        class="todo-item-input-text {todo.done == true? 'text-done' : ''}" 
         id="{todo.id}"
         placeholder="Inserisci il nuovo ToDo" 
         bind:value={todo.task} 
@@ -45,7 +45,7 @@
 
 
 <Cell>
-    <Priority/>
+    <Priority disabeld ={todo.done}/>
 </Cell>
 
 <Cell>
@@ -65,4 +65,9 @@
          color: black; 
          padding: 4px; 
          padding-left: 10px; }
+
+    .text-done{
+        text-decoration: line-through;
+        opacity: 0.3;
+    }
 </style>
