@@ -7,7 +7,7 @@
     import Todo from "../lib/components/ToDo.svelte";
 </script>
 
-<h1 class="pixel-font">ToDo List</h1>
+
 
 <Todo/>
 
